@@ -58,7 +58,7 @@ public class PlayerTest {
         player.playerDeposits(27);
 
         player.playerBets(4);
-        player.playerLoses();
+        player.playerTies();
 
         assertThat(player.balance()).isEqualTo(27);
     }
