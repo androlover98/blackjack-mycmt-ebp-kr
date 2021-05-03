@@ -21,6 +21,10 @@ public class Player {
 
     public void playerWins() {
         this.playerBalance += playerBet * 2;
+
+        if(playerBet >= 100) {
+            playerBalance += 10;
+        }
     }
 
     public void playerLoses() {

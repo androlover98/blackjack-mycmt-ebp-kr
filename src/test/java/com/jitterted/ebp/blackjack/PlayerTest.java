@@ -91,4 +91,28 @@ public class PlayerTest {
 
         assertThat(player.totalAmountBet()).isEqualTo(5 + 9 + 23);
     }
+
+    @Test
+    public void testPlayerBalance112Bet103WinsBalance225() {
+        Player player = new Player();
+        player.playerDeposits(112);
+
+        player.playerBets(103);
+        player.playerWins();
+
+        assertThat(player.balance()).isEqualTo(112 + 103 + 10);
+    }
+
+    @Test
+    public void testPlayerBalance154Bet103WinsBet164WinsBalance441() {
+        Player player = new Player();
+        player.playerDeposits(154);
+
+        player.playerBets(103);
+        player.playerWins();
+        player.playerBets(164);
+        player.playerWins();
+
+        assertThat(player.balance()).isEqualTo(154 + 103 + 10 + 164 + 10);
+    }
 }
