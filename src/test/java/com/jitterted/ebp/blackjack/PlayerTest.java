@@ -27,7 +27,7 @@ public class PlayerTest {
 
         player.playerBets(11);
 
-        assertThat(player.balance()).isEqualTo(17);
+        assertThat(player.balance()).isEqualTo(28 - 11);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class PlayerTest {
         player.playerBets(12);
         player.playerWins();
 
-        assertThat(player.balance()).isEqualTo(51);
+        assertThat(player.balance()).isEqualTo(39 + 12);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class PlayerTest {
         player.playerBets(3);
         player.playerLoses();
 
-        assertThat(player.balance()).isEqualTo(16);
+        assertThat(player.balance()).isEqualTo(19 - 3);
     }
 
     @Test
@@ -61,5 +61,34 @@ public class PlayerTest {
         player.playerTies();
 
         assertThat(player.balance()).isEqualTo(27);
+    }
+
+    @Test
+    public void testNewPlayerTotalBet0() {
+        Player player = new Player();
+
+        assertThat(player.totalAmountBet()).isEqualTo(0);
+    }
+
+    @Test
+    public void testPlayerBet12TotalBet12() {
+        Player player = new Player();
+        player.playerDeposits(70);
+
+        player.playerBets(12);
+
+        assertThat(player.totalAmountBet()).isEqualTo(12);
+    }
+
+    @Test
+    public void testPlayerBet5Bet9Bet23TotalBet37() {
+        Player player = new Player();
+        player.playerDeposits(70);
+
+        player.playerBets(5);
+        player.playerBets(9);
+        player.playerBets(23);
+
+        assertThat(player.totalAmountBet()).isEqualTo(5 + 9 + 23);
     }
 }
